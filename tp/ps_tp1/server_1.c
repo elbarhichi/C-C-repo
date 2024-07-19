@@ -3,6 +3,7 @@
  * 3IF1020 - Programmation système - TP n°1
  *
  * server_1.c
+ * cc -o server_1 server_1.c
  */
 
 // for printf()
