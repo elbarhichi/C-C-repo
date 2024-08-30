@@ -6,7 +6,7 @@
  * Fibonacci.cpp
  *
  * Compilation :
- *     g++ -std=c++20 -o Fibonacci Fibonacci.cpp
+ *     c++ -std=c++20 -o Fibonacci Fibonacci.cpp
  * Exécution :
  *     ./Fibonacci
  */

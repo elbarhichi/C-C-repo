@@ -6,7 +6,7 @@
  * Ranges.cpp
  *
  * Compilation :
- *     g++ -std=c++20 -o Ranges Ranges.cpp
+ *     c++ -std=c++20 -o Ranges Ranges.cpp
  * Exécution :
  *     ./Ranges
  */

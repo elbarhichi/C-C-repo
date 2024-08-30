@@ -49,7 +49,7 @@ int main()
     std::cout << "Factorial< 0 >  = " << Factorial< 0  >::value << "\n";
     std::cout << "Factorial< 13 > = " << Factorial< 13 >::value << "\n";
     std::cout << "Factorial< 14 > = " << Factorial< 14 >::value << "\n";
-    //std::cout << "Factorial< " << i << " > = " << Factorial< i > << "\n";
+    //std::cout << "Factorial< " << i << " > = " << Factorial< i >::value << "\n";
 #else
     std::cout << "factorial( 0 )  = " << factorial( 0 )  << "\n";
     std::cout << "factorial( 13 ) = " << factorial( 13 ) << "\n";

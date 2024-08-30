@@ -21,7 +21,7 @@
 std::condition_variable cond_place_empty,
                         cond_place_full;
 std::mutex data_mutex;
-volatile int data_available{ 0 };
+volatile bool data_available{ false };
 volatile int data{ 0 };
 
 bool done() { return false; }
@@ -54,12 +54,12 @@ struct producer {
     while( !done() ) { 
       create_data(); 
       {
-        std::unique_lock lock( data_mutex );
-        if( data_available == 1 ) { 
+        std::unique_lock lock{ data_mutex };
+        if( data_available ) { 
           cond_place_empty.wait( lock );
         }
         put_data_into_place(); 
-        data_available = 1; 
+        data_available = true; 
         cond_place_full.notify_one();
       }
     } 
@@ -70,12 +70,12 @@ struct consumer {
   void operator()() {
     while( !done() ) { 
       {
-        std::unique_lock lock( data_mutex );
-        if( data_available == 0 ) { 
+        std::unique_lock lock{ data_mutex };
+        if( ! data_available ) { 
           cond_place_full.wait( lock );
         }
         get_data_from_place(); 
-        data_available = 0; 
+        data_available = false; 
         cond_place_empty.notify_one();
       }
       process_data(); 
@@ -85,7 +85,7 @@ struct consumer {
 
 
 int main() {
-  std::thread c( consumer{} ), p( producer{} );
+  std::thread c{ consumer{} }, p{ producer{} };
 
   c.join();
   p.join();

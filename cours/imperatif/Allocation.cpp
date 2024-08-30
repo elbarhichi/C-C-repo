@@ -48,7 +48,8 @@ void bar()
     static unsigned nb = 0;
     while( true ) {
         std::cout << "nb = " << ++nb << "\n";
-        new int[1000000];
+        // Les apostrophes, qui facilitent la lecture du nombre, sont ignorés
+        new int[1'000'000];
     }
 }
 

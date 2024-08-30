@@ -62,22 +62,6 @@ Pile::Pile( const Pile & p )
 }
 
 #ifdef DEFINE_COPY_ASSIGNMENT
-/*
-Pile & Pile::operator=( const Pile & p )
-{
-    if( this != &p ) {
-        delete[] tab_;
-        taille_ = p.taille_;
-        index_ = p.index_;
-        tab_ = new double[taille_];
-        for( unsigned int i{ 0 }; i < index_; ++i ) {
-             tab_[i] = p.tab_[i];
-        }
-    }
-    return *this;
-}
-*/
-
 void Pile::swap( Pile & p )
 {
     using std::swap;

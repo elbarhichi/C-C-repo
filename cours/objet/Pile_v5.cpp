@@ -17,23 +17,16 @@
 #include <stdexcept>
 #include <utility>
 
-//#define USE_CONST_MEMBERS
-
-#ifdef USE_CONST_MEMBERS
-#define CONST const
-#else
 #define CONST
-#endif
+//#define CONST const
 
 class  Pile {
 public:
         Pile( unsigned int taille = 100 );
         ~Pile();
         Pile( const Pile & p );
-#ifndef USE_CONST_MEMBERS
         Pile & operator=( const Pile & p );
         void swap( Pile & p );
-#endif
         
         void     empile( double v );
         double   depile();
@@ -46,15 +39,6 @@ private:
         unsigned int index_;
 };
 
-#ifdef USE_CONST_MEMBERS
-Pile::Pile( unsigned int taille )
-    : taille_{ taille }
-    , tab_{ new double[taille_] }
-    , index_{ 0 }
-{
-    std::cout << "Constructeur\n";
-}
-#else
 Pile::Pile( unsigned int taille )
 {
     taille_ = taille;
@@ -62,20 +46,16 @@ Pile::Pile( unsigned int taille )
     index_ = 0;
     std::cout << "Constructeur\n";
 }
-#endif
-
-#ifdef USE_CONST_MEMBERS
-Pile::Pile( const Pile & p )
-    : taille_{ p.taille_ }
-    , tab_{ new double[p.taille_] }
-    , index_{ p.index_ }
+/*
+Pile::Pile( unsigned int taille )
+    : taille_{ taille }
+    , tab_{ new double[taille_] }
+    , index_{ 0 }
 {
-    std::cout << "Constructeur de copie\n";
-    for( unsigned int i{ 0 }; i < p.index_; ++i ) {
-        tab_[i] = p.tab_[i];
-    }
+    std::cout << "Constructeur\n";
 }
-#else
+*/
+
 Pile::Pile( const Pile & p )
 {
     std::cout << "Constructeur de copie\n";
@@ -86,9 +66,19 @@ Pile::Pile( const Pile & p )
         tab_[i] = p.tab_[i];
     }
 }
-#endif
+/*
+Pile::Pile( const Pile & p )
+    : taille_{ p.taille_ }
+    , tab_{ new double[p.taille_] }
+    , index_{ p.index_ }
+{
+    std::cout << "Constructeur de copie\n";
+    for( unsigned int i{ 0 }; i < p.index_; ++i ) {
+        tab_[i] = p.tab_[i];
+    }
+}
+*/
 
-#ifndef USE_CONST_MEMBERS
 void Pile::swap( Pile & p )
 {
     using std::swap;
@@ -103,7 +93,6 @@ Pile & Pile::operator=( const Pile & p )
     swap( tmp );
     return *this;
 }
-#endif
 
 bool Pile::est_vide() const
 {
@@ -133,9 +122,7 @@ int main()
     p1.empile( 5 );
     
     Pile p2( p1 );
-#ifndef USE_CONST_MEMBERS
     p2 = p1;
-#endif
 
     const Pile p3{ 10 };
     // p3.empile( 3 );

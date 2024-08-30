@@ -12,6 +12,7 @@
 
 
 #include <iostream>
+#include <cstdint>
 
 #include <cppcoro/generator.hpp>
 
