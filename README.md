@@ -31,8 +31,8 @@ copier le contenu du fichier
 
 ## Sur GitLab
 
-5. Afficher la fenêtre de réglages de vos préférences (menu accessible par l'icône en haut 
-à droite), sélectionner l'onglet `SSK Keys`, coller votre clef publique dans le champ `Key`, 
+5. Afficher la fenêtre de réglages de vos préférences (menu accessible par l'icône de votre 
+avatar), sélectionner l'onglet `SSK Keys`, coller votre clef publique dans le champ `Key`, 
 changer le titre éventuellement et cliquer sur le bouton `Add key`
 
 ## Sur MyDocker, dans un Terminal :
