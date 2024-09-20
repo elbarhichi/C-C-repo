@@ -38,7 +38,7 @@ changer le titre éventuellement et cliquer sur le bouton `Add key`
 ## Sur MyDocker, dans un Terminal :
 
 6. Dans le répertoire **`workspace`**, faire une copie locale de votre dépôt (en remplaçant 
-`<username>` par votre identifiant, l'URL est accessible dans le menu **`Clone`** sur GitLab) :
+`<username>` par votre identifiant, l'URL **`Clone with SSH`** est accessible dans le menu **`Code`** en haut à droite sur GitLab) :
 ```sh
 git clone git@gitlab-student.centralesupelec.fr:<username>/3if1020.git
 ```
