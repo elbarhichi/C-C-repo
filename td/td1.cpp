@@ -14,19 +14,26 @@
 #include <numbers>
 
 
+
 // Définir une fonction qui calcule et retourne la valeur de 𝑓 en 𝑥
 double sin_x_plus_cos_sqrt2_times_x( double x )
 {
-    // TODO
-    return 0;
+    return sin( x ) + cos( std::numbers::sqrt2 * x) ;
 }
+
+void print_function(double x) {
+    std::cout << "sin_x_plus_cos_sqrt2_times_x( " << x << " ) = "
+    << sin_x_plus_cos_sqrt2_times_x( x ) << std::endl;
+}
+
 
 // Définir une fonction test_11() qui appelle la précédente avec 1 puis avec -4.5 comme
 // argument, et qui affiche les résultats retournés.
 void test_11()
 {
-    // Remove TODO when done
-    std::cout << "test_11: TODO\n";
+    std::cout << "test_11: " << std::endl;
+    print_function(1); 
+    print_function(-4.5) ;
 }
 
 // Définir une fonction test_12() qui demande une valeur à l'utilisateur, appelle la
@@ -34,7 +41,11 @@ void test_11()
 // comme argument et affiche le résultat retourné. 
 void test_12()
 {
-    std::cout << "test_12: TODO\n";
+    std::cout << "test_12:\n";
+    double user_value;
+    std::cin >> user_value;
+    std::cout << "Valeur : "<< user_value << "\n";
+    print_function(user_value);
 }
 
 // Définir une fonction test_21() qui demande une valeur à l'utilisateur, et affiche le
@@ -43,21 +54,35 @@ void test_12()
 // Vous utiliserez une boucle for avec une variable de boucle commençant à 0.
 void test_21()
 {
-    std::cout << "test_21: TODO\n";
+    std::cout << "test_21:\n";
+    double user_value;
+    std::cout << "Valeur initiale : ";
+    std::cin >> user_value;
+    for( int i = 0; i < 10; i++ )
+    {
+        print_function(user_value + i);
+    }
+    std::cout << std::endl;
 }
 
 // Définir une fonction qui affiche le résultat de la fonction sin_x_plus_cos_sqrt2_times_x()
 // pour toutes les valeurs entre begin et end avec un pas de step. 
 void print_sin_x_plus_cos_sqrt2_times_x( double begin, double end, double step )
 {
-    // TODO
+    for( double x = begin; x <= end; x += step )
+    {
+        print_function(x);
+    }
 }
 
 // Définir une fonction test_22() qui appelle la précédente avec -10, 10 et 2 comme arguments
 void test_22()
 {
-    std::cout << "test_22: TODO\n";
+    std::cout << "test_22:\n";
+    print_sin_x_plus_cos_sqrt2_times_x(-10, 10, 2);
+    std::cout << std::endl;
 }
+
 
 // Définir une fonction test_23() qui demande à l'utilisateur une borne basse, une borne
 // haute (qui devra être supérieure à la borne basse) et un nombre de valeurs à afficher,
@@ -69,7 +94,46 @@ void test_22()
 // sont demandées. 
 void test_23()
 {
-    std::cout << "test_23: TODO\n";
+    std::cout << "test_23: \n";
+    double begin, end;
+    int number_of_values;
+    bool is_valid1 = false;
+    bool is_valid2 = false;
+
+    std::cout << "Borne basse : ";
+    std::cin >> begin;
+
+    while (!is_valid1 || !is_valid2) {
+
+        if (!is_valid1){
+        std::cout << "Borne haute : ";
+        std::cin >> end;
+        
+
+        if (end <= begin) {
+            std::cout << "Erreur : la borne haute doit être plus grande que la borne basse\n";
+            continue;
+        }
+        else {
+            is_valid1 = true;
+        }
+        }
+        else {
+            std::cout << "Nombre de valeurs : ";
+            std::cin >> number_of_values;
+
+            if (number_of_values < 2) {
+                std::cout << "Erreur : le nombre de valeurs doit être au minimum 2\n";
+                continue;
+            }
+            else {
+                is_valid2 = true;
+        }
+    }
+}
+
+    print_sin_x_plus_cos_sqrt2_times_x(begin, end, (end - begin) / (number_of_values - 1));
+
 }
 
 // Définir une fonction qui retourne la valeur estimée de la dérivée de la fonction func en x
@@ -151,11 +215,11 @@ void test_42()
 
 int main()
 {
-    test_11();
-    test_12();
-    test_21();
-    test_22();
-    test_23();
+    // test_11();
+    // test_12();
+    // test_21();
+    // test_22();
+    // test_23();
     test_31();
     test_32();
     test_41();
