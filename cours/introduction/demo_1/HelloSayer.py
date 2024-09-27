@@ -12,7 +12,7 @@
 import sys
 
 def hello( world ):
-    print( "Hello " + world );
+    print( "Hello " + world )
 
 if __name__ == "__main__":
     # sys.argv[0] est le nom du script
