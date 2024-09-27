@@ -26,6 +26,8 @@ int main( int argc, char * argv[] )
     // argv[0] est le nom de l'exécutable
     // argv[1] est le premier argument sur la ligne de commande
     // Appel de la fonction hello() avec un argument
-    if( argc > 1 ) hello( argv[1] );
+    if( argc > 1 ) {
+        hello( argv[1] );
+    }
     return 0;
 }
